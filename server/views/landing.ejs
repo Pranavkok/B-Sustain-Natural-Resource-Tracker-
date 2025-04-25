@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome | Bsustain</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn-group {
+            margin-top: 30px;
+        }
+
+        .btn {
+            text-decoration: none;
+            background-color: #ffffff;
+            color: #333;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background-color: #f4f4f4;
+            transform: scale(1.05);
+        }
+
+        section.features {
+            padding: 60px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .feature-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            width: 280px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .feature-boxes {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="animate-header">🌿 Welcome to Bsustain</h1>
+    <p class="animate-subtext">Track your daily environmental impact, earn points, and join the movement for a greener future 🌍</p>
+    <div class="btn-group animate-buttons">
+        <a href="/api/user/login" class="btn">Login</a>
+        <a href="/api/user/register" class="btn">Register</a>
+    </div>
+</header>
+
+<section class="features">
+    <h2 class="animate-feature-title">Why Bsustain?</h2>
+    <div class="feature-boxes">
+        <div class="feature animate-feature">
+            <h3>💧 Water Tracking</h3>
+            <p>Log daily water use in buckets, liters, or glasses and get visual feedback on your consumption habits.</p>
+        </div>
+        <div class="feature animate-feature">
+            <h3>⚡ Electricity Insights</h3>
+            <p>Monitor your electricity usage with daily meter readings and track your eco-impact in real time.</p>
+        </div>
+        <div class="feature animate-feature">
+            <h3>🚲 Eco-Friendly Rides</h3>
+            <p>Track your daily travel choices and earn more points for using public or eco-friendly transportation.</p>
+        </div>
+        <div class="feature animate-feature">
+            <h3>🏆 Badges & Rewards</h3>
+            <p>Unlock badges, climb leaderboards, and stay motivated to make a real impact in the world.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    &copy; <%= new Date().getFullYear() %> Bsustain — Made with 💚 for the planet
+</footer>
+
+<script>
+    // GSAP animations
+    gsap.from(".animate-header", {
+        y: -50,
+        opacity: 0,
+        duration: 1
+    });
+
+    gsap.from(".animate-subtext", {
+        y: 30,
+        opacity: 0,
+        delay: 0.5,
+        duration: 1
+    });
+
+    gsap.from(".animate-buttons", {
+        scale: 0.8,
+        opacity: 0,
+        delay: 1,
+        duration: 0.8
+    });
+
+    gsap.from(".animate-feature-title", {
+        y: 20,
+        opacity: 0,
+        scrollTrigger: ".features",
+        duration: 1
+    });
+
+    gsap.from(".animate-feature", {
+        opacity: 0,
+        y: 40,
+        stagger: 0.2,
+        duration: 0.8,
+        scrollTrigger: ".features"
+    });
+</script>
+
+</body>
+</html>

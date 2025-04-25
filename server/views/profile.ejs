@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Bsustain</title>
+    <style>
+        /* Updated CSS for Profile Page */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/*.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #008000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    a{
+         
+        text-decoration:none ;   
+   }
+}
+.nav-links a:hover{
+    color: #008000;
+    
+}
+.nav-links li {
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.nav-links li:hover {
+    color: #008000;
+}
+
+.profile-container {
+    display: flex;
+    width: 80%;
+    margin-top: 20px;
+    gap: 20px;
+    position: relative;
+    left: 500px;
+}
+
+.profile-info {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+    
+    h2{
+    position: relative;
+    bottom: 20px;
+    right: 20px;
+    }
+
+    a{
+        text-decoration: none;
+    }
+}
+
+.profile-info img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.profile-info h3, .profile-info p {
+    text-align: center;
+}
+
+.edit-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 8px 16px;
+    background: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/*.sustainability-journey {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}*/
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.stat-box {
+    background: #ecf0f1;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 22%;
+}
+
+.feedback-section {
+    display: flex;
+    width: 80%;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.submit-feedback, .community-feedback {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-feedback textarea, .submit-feedback button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.community-feedback  {
+    list-style: none;
+    padding: 0;
+}
+
+.community-feedback  {
+    background: #ecf0f1;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Bsustain</div>
+        <ul class="nav-links">
+            <a href="/api/user/dashboard">Home</a>
+          <a href="/api/user/input">Input</a>
+          <a href="/api/user/activity">Activity</a>
+          <a href="/api/user/leaderboard">Leaderboard</a>
+          <a href="/api/user/badges">Badges</a>
+        </ul>
+    </nav>
+    
+    <div class="profile-container">
+        <div class="profile-info">
+            <h2>Profile Information</h2>
+            <div class="profile-card">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAtAMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABgEDBAUHAgj/xAA/EAABAwMCAwQGCAQFBQAAAAABAAIDBAURBiESMUETUWGBBxQicaHBFTIzQlJykdEjseHwQ1NiY5IkNDZEov/EABsBAAIDAQEBAAAAAAAAAAAAAAAFAgMEBgEH/8QALhEAAgICAgEDAgMJAQAAAAAAAAECAwQREiEFEzFBUXEiMmEjJDNCgZGhscEU/9oADAMBAAIRAxEAPwDuKIiACIiACoeaZXh8jWNLnEANG+TyXgHrO6sVVVBSRGapkZHGObnHChupNdxUxfT2lolmBwZXfUB+agFfcKy4zGWuqJJn9OM7N9w5BZbcuMPbsbYviLr/AMUukdJuWv7VTEtpWyVRH4Bhv6lR2q9Idykz6tTQQ578uKh42CLFLLtkPKfEYsPdb+5v5dZ3+Tf14M8GRN+eV4Gr9QA5+knnwMbf2Wj64TCp9Wf1NSwcb24L+xJoNd3yM+3LDKP9UeP5Fbmg9Iw4g2uoSB+KJ2fgufqqnHJsj8lNni8Sxa46O0WvUtpuZApqpgkP+G/2XLcBw59F8/DZ2R/f7KSWLWVztjmRzvNVTD7jz7TfcfkVrrzU+pIUZPhJRXKp7/RnXwVVamx32ivFP2lI/Lh9eM7Ob5LaB2RnC3RkpLaEU4ShJxkuz0iIpEQiIgAiIgAiIgAqHkmTleJXBrC5xAAGST0QBaqqmOlgdPO5rI2AlznHYBcr1Xq2ovDzT0rnQ0TTuBsZff4eCrrXUjrvU+rUri2ihOAQftXDqfDu/vEXSzKym3xidP4zxiglbau/hfQr/eyoiLB7vsf6LdRPHTROlmcGxt5kqOVepZ3EtpYY42jk5/tH9F41PWGWp9VYcMiwXeLlpE6xMKHBTn7s5nyPk7PUddT0kbP6fuX+c33dm39lej1JWt+1ZDIPylq0ye9bXi0v+UVLPvj7TZI2aoGAJaQgd7ZM/ArNp9QUMxDXOdE48g8KHbdCVVZ5+Ppkukaq/MZMfzPZ0UEEAggg7gjqijulq5zi6ilcTgcUZPQdQpEk19Lpm4nU4uTHIqU0X6KsqKGoZUUkropWnZzevge8Lquk9Uw3uLsZw2KuaPaZ0eO9q5GrlPPLTTMmp5HRysPE17TuCpUXyqf6GbO8fDJj9JHfwf0VVH9J6hZfaLLuFlVF7M0fzHgt/lOIyUltHG2Vyrk4yXaKoiKRAIiIAIiFAHhxODjmoR6RL86lp22ymeRNMMyOG3Cz+vJTKqnbTU8k8rsMjaXOPgFw661z7lcZ62U5dK7I8G9B+iyZdnCOl8jXxGKr7uUvZGJ/eO5ERKTsQrFdUtpKWWd2/A3Yd56K+tTqjP0URnZ0jAfcrKY87Ioz5djrplNfCIlI90kj5HkF73EuJ7ypdprQNbd4m1VdMKOlcMsGMyPb3gcgPetXoi1x3fUdLTzt4oWcU0rfxBvTzJC7hhOcrIdX4IHHUU+q3ORzys9F0f8A6N2e045VEPEP1bj+Sx4fRdUcX/U3eEN/2oCT8ThdLRYlmXfU1vGrfwQyP0bWRsHA+atkef8AF7UAg/lxhQHVenJ9OVzIXv7WnmBdBNjHEBzB8R813JRX0lUIrNLVEvDmSlcJmnu6O+BVuPlWeotvaKr8aHDaRy/TQJvER6Br8/opmobpuQNu8Ydye1zR7/7CmKo8kn6o68H3jv7hERYBybCxXWazXGKrjJIaQJGA/Xb1C7XRVUdXBFPA8PikaHNd3ghcEG3gujejK68dNLbJXZMPtxb/AHT0/Vb8O3T4MQeaxOUfWXuifIvOVUJmcwVREQAVDyVVQ8kARL0jV5pbEYGEh9S8R7d3MrlO3RTT0o1PHdaSm/yoS7zcf6KFpPly5WnY+Hp4Yqf17CIiyjULBvkBqbXPHG3ieG8bQOZIWcsq2DNwpx0L8qcJOMk0VXxUq5RfyjT+i+F8V/rnyxSB0FKQ6Pg9sEuG2PJSiuuGtJHl1us1JDD0bPO10hHjg4B9ytadmZBri8UpwH1FPHM3vONj8ld1pbL7PSxy2WtqXTdseKCF4iDI8bYPU5xnJTSclZYm9e3ycik4Q0t/0MzT92vlVVGmvNkfS4aSKljgWHw59VITnGwye7OFiWimmpLVRxVdRJPVCBnbuec4k4RxAHqM96y/081kt1y6/wAGmt/h72Q+ru+sKmocy2aebBC1xAfVSNBdj3kfBZVNJfrhST2/UFpjYyojdH29NK1zckfebnIHiqa6t94qaGB+n6mp9Y7X+LFHII8NwcEHrvjqttZKKso6SFtZWyVDnQs7RsuCY5Me1h3UbdVobiobWv8ApQm3PT2cYtNFVMvTIHRvL6aUiUhp9nGck9ymXJZmnJGVty1HVtG0tZ2e34WtKwhyVGbZysQ58NHjW/uERFiHBULa6Vrfo6/Uk+4DniN/iDt/NalM43HMbhTrfGSZVfWrK3B/J9AMOcL2Fg2ap9ctdLU5+0ia74LOCfJ7SOAlHjJoqiIvSIVDyVVQ8kAcf9IMnaarqgfuMjYP+Ofmo4t/rwY1bXZ68BH/AAatAkNv8Rnd4C/dofZBERVmsK9SPEdXC/P1XhWVX3oBra0YOoLh9Ca/pLhk9k2NnagdWHId8F1Rrg5oc0hzXAEEdVxXWcj5qulfLg4h4OIDuKnukrn6joKKvuBe6OmY/GNy5odgAfyTWyClVGa+xyT3XfOt/BLU5KGUWuKi5RudS6eq5IAS0yNnaP239yvDUdxw3NhrOzB9jhrGcR/Nn91ndEok42xa6JbkLU6rurbNYausLh2gbwRN75DsFo4Nehl0hoLnaaiidK4ND3SA4zsPj3LSel+Wb122QEnsOye8Dpx8QGfHb+asqon6iUiu29cHouaAzBputmLskzu3zuTwgfuvSwdNyvZYIqcYETpHyeJyVnLNlP8AbSHvjKnXjpv5CIizjEIiqEAzsOhHmTSlvPcwtPk4j5KQNUd9H3/iVF49of8A7cpGE+q/IjgMpavn93/sqiIrCgKjvqlVVDyQByX0jwmPUplxtLAx2fdkfsosuhelGicYqKsa3ZjjG/A6HcfFc9SXJjxtZ2virOeLH9OgiIs4xCIiANPqajkqKRskTOIxEkgc+FYL9VzHR7rEYAOA5ZO13NoOcEdd1JlqLjp1ldI59FwRzEEljtmv/ZMsTJil6cxD5Px8pSd1T+50uz0jKG0UENLBTzxR00Y4JWBwd7OeL3k5KzO2Y4YFiomk7ZLchcxtGtrrpyCO23S3mdsDeGIveWPAHLfBDgtXYtX1lqu09fUNfVRzh3HC6YgNyc7c8Y9yu/8APbLbQqd1S0muyY+k+nayy0daWxipgqm8BY3AAOdgO7YHyUM1RqGfVVdSBlIIhAwxxtDuJxLsEknyCzLlXXvW80YEDYKSE5aAT2bT3lx3ccFZVttUFvb7A45TzkdzPu7gvZWxoguXci2jEnl2Pj1H5Miig9Wo4YDzY0A471eREok3J7Z1kIKEVFfAREUSQTON8Ir9FTuq6yCnZzlka0e4lexW2kRsajFyZ2PR8BptN2+J3MQtOPE7/NbkKzTxiGFkTRhrG8I8leCfxWoo+fWT5zcvqVREUiAVDyVUQBptT2/6TslTTEZeWcTPzDcLipyCQ7ORsfevoB2Mb8lyTXtnNsvBmiZimqsubtsH9R81gza9rkh/4PJUZuqXz2RlERLDpwiJgoALOtMJmqH8OPZbzPisWGCad3DDGX77lo2HnyCkNuovVIt8Oe7d2Oikk0zLk3RUNJmFWUUNTGYa2Fkje54Wrh0xaYZu1FMXHoHuLmjyUqexsgw8ZCsPpAfqvx4FXq2cVpMS+nB+6MRjWsYGMbgDYAbYWlkHC9zcYwSpK2k39p4I8FhXG1ySSCSkbxOPOMc/JVS2zdiWxg2n0jSovT2PY8skY5jxza5uCPJeVW017jWMoyW0wiIg9HuUs9HNu9bvXrL/ALOmbkfmKigBJAAJJIAA5k9MLsmj7OLPZ4oZGgVEntzH/UenlyWrEq5T2/ZCny+UqqOKfb6N6GjC9BETg48IiIAIiIAphavUNnhvFufSy7E7sd+Fw5FbVeXclGUVJaZKM5QkpRfaOC11JLQVstJUt4ZY3cJ8VfpbNc6r7Chnc08ncGB+pXYqq10tRUNq3QxGqY0tbKRkgLHcDkh438VjWAm97HkvPTUFqPfyc7pNFXKXBqHw07euSXH4Lf0GjLdTlrqkvqXDf2jhufcFJFVaYYlUO9C67y2Tb1y0a2e3RGllpIImR/fiDRgEjooyRhxa7II2wprI3jbtsWnId3Fa24W1lY7jaRFU43HRyrycbn3H3I4uXxep/JG0WVPb6qDZ8LsfiaMgq02nmc4ARSEn/SUtdcl1obq2DXUkWjjG62lipe1qO2f9lD7WT1KrSWaWQ8VV/BiHPPNbuCFoYyOJvDA3kAN3FbcbGlvchfl5cUuEX2Wai1UdwjPr1MyQu3yR7Q81H63Q0D8uoah0Xc2RuQpdz5hFtnj1z90Yqc7Ip/JI5rVaSu1OSWxMnb/tO3PkVqamhq6T/uqaaHxfGQB5rsCvw0onb/EAMXUOGQ5ZZ4Fb7i9DWrz10epxTIL6PdPGqqG3SpYRDG7+C0/ecNs+S6Y0Acl5ijihjbHExrGNGGtaMADwC9hXVVKuOkLcrKlk2Ocj0iIrTOEREAEREAEREAFYqIGyjud3q+qFHseNbNPJE6M4cPNeFuXtDhhwyFiy0IIJj28Cp8iPEwV5cxrmgO3I+Cuvgkj5sI8QrakiJ44Xt+pJn84z8UxN1ezyb/Ve0QwPHZDILyX/AJuQ8lc67KiqGlx2BPuXgFExk/JZMVHI85cOALMip44uQJPeUOSPVFsxaakLiHSbN7u9Z7WgAADYKoVVW3smloIiIPQiIgAiIgAiIgAiIgAiIgAiIgChXh0MbvrMafJEQB4NJAfufFU9Ug/B8URe7PNHoU0I5MHmrga0chj3KiLwD0FVEQehERABERABERABERAH/9k=" alt="Profile Picture" class="profile-pic">
+                <h3><%= data.data.name %></h3>
+                <p> <%= data.data.email %></p>
+                <p>📍 <%= data.data.city %></p>
+                <p>🔥 <%= data.data.streak %></p>
+                <p>🏆 <%= data.data.points %></p>
+                <button class="edit-btn"><a href="/api/user/update-profile">Edit Profile</a></button>
+                <a href="/api/user/feedback">
+                    <button class="btn btn-secondary">Give Your Feedback</button>
+                  </a>
+                  
+            </div>
+        </div>
+        
+      
+    </div>
+    
+    <div class="feedback-section">
+     
+    </div>
+
+    <style>
+        .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s ease;
+  border: none;
+  position: relative;
+  left: 90px;
+}
+
+.btn-secondary {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #45a049;
+}
+
+    </style>
+</body>
+</html>

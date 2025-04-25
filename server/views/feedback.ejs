@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback - BeSustain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f7faf7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #4CAF50;
+      padding: 16px 32px;
+      color: white;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 32px;
+      flex: 1 1 450px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #222;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a047;
+    }
+
+    .feedback-list {
+      margin-top: 16px;
+    }
+
+    .feedback-entry {
+      background-color: #f1f8f1;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 4px solid #4CAF50;
+    }
+
+    .feedback-entry h4 {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .feedback-entry p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">BeSustain</div>
+
+  <div class="container">
+    <!-- Feedback Form -->
+    <div class="card">
+      <h2>Submit Your Feedback</h2>
+      <p>We'd love to hear your thoughts and improve our platform.</p>
+      <form action="/api/feedback/add-feedback" method="POST" onsubmit="showThankYou(event)">
+
+        <label for="feedback">Your Feedback</label>
+        <textarea id="feedback" name="message" required></textarea>
+
+        <button type="submit" id="subbtn">Submit Feedback</button>
+      </form>
+      <p id="thankYouMsg" style="display:none; color: green; margin-top: 20px; font-weight: 600;">Thank you for your feedback!</p>
+    </div>
+
+    <!-- Community Feedbacks -->
+   
+  </div>
+
+  <script>
+    function showThankYou(e) {
+      e.preventDefault();
+      document.getElementById("thankYouMsg").style.display = "block";
+    }
+
+
+    
+     
+  </script>
+</body>
+
+</html>

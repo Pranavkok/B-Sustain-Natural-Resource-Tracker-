@@ -1,0 +1,118 @@
+/api/user/update-profile<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Update Profile - BeSustain</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">BeSustain</div>
+  </nav>
+
+  <!-- Update Profile Form -->
+  <div class="container">
+    <h2>Update Profile</h2>
+    <form class="update-form" action="/api/user/update-profile" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" name="name" id="name" placeholder="Enter your name" required />
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="Enter your email" required />
+
+      <label for="city">City</label>
+      <input type="text" name="city" id="city" placeholder="Enter your city" />
+
+     
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f8f4;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #4CAF50;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Container */
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.container h2 {
+  margin-bottom: 25px;
+  color: #4CAF50;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* Form */
+.update-form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.update-form input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fdfdfd;
+}
+
+.update-form button {
+  width: 100%;
+  margin-top: 25px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.update-form button:hover {
+  background-color: #43a047;
+}
+
+  </style>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{"weeklyWater": {
+    "message": "Weekly water consumption data fetched successfully",
+    "success": true,
+    "error": false,
+    "data": [
+        {
+            "totalLiters": 20,
+            "dayName": "Saturday",
+            "date": "2025-03-29"
+        },
+        {
+            "totalLiters": 10,
+            "dayName": "Friday",
+            "date": "2025-04-04"
+        }
+    ]
+},
+"weeklyElectricity": {
+            "message": "Weekly electricity data retrieved",
+            "success": true,
+            "data": [
+                {
+                    "minReading": 2001,
+                    "maxReading": 400705,
+                    "day": "Saturday",
+                    "date": "2025-03-29",
+                    "totalUsage": 398704
+                }
+            ]
+        },
+"weeklyFuel": {
+            "message": "Weekly fuel data retrieved",
+            "success": true,
+            "data": [
+                {
+                    "totalDistance": 1737.6547500000001,
+                    "totalPoints": 1737.6547500000001,
+                    "day": "Saturday",
+                    "date": "2025-03-29"
+                },
+                {
+                    "totalDistance": 579.24244,
+                    "totalPoints": 579.24244,
+                    "day": "Friday",
+                    "date": "2025-04-04"
+                }
+            ],
+            "error": false
+        }
+
+}

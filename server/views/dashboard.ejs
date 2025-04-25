@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bsustain Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #008000;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            color: #008000;
+        }
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #008000;
+            cursor: pointer;
+        }
+        .dashboard {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .dashboard-header {
+            margin-bottom: 30px;
+        }
+        .dashboard-header h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .dashboard-header p {
+            color: #666;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .stat-card h3 {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #008000;
+        }
+        .consumption-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .consumption-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .consumption-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .consumption-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .consumption-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .consumption-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .consumption-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .consumption-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Bsustain</div>
+        <ul class="nav-links">
+            <a href="/api/user/dashboard">Home</a>
+            <a href="/api/user/input">Input</a>
+            <a href="/api/user/activity">Activity</a>
+            <a href="/api/user/leaderboard">Leaderboard</a>
+            <a href="/api/user/badges">Badges</a>
+        </ul>
+        <a href="/api/user/profile" class="profile-icon" id="profileIcon"></a>
+    </nav>
+
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h1>Dashboard</h1>
+            <p>Track your sustainability journey and impact</p>
+        </div>
+
+        <!-- Main Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Points</h3>
+                <div class="value"><%= data.rank?.data?.points || '0' %></div>
+            </div>
+            <div class="stat-card">
+                <h3>Current Streak</h3>
+                <div class="value"><%= data.streak?.streak || '0' %> days</div>
+            </div>
+            <div class="stat-card">
+                <h3>Current Rank</h3>
+                <div class="value">#<%= data.rank?.data?.rank || 'N/A' %></div>
+            </div>
+        </div>
+
+        <!-- Consumption Stats -->
+        <div class="consumption-section">
+            <h2>Consumption Overview</h2>
+            <div class="consumption-grid">
+                <!-- Weekly Electricity -->
+                <div class="consumption-card">
+                    <h3>Weekly Electricity</h3>
+                    <ul class="consumption-list">
+                        <% if (data.weeklyElectricity?.data && data.weeklyElectricity.data.length > 0) { %>
+                            <% data.weeklyElectricity.data.forEach((entry) => { %>
+                                <li><%= entry.day %>: <%= entry.totalUsage %> kWh</li>
+                            <% }) %>
+                        <% } else { %>
+                            <li>No weekly electricity data available</li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <!-- Water Consumption -->
+                <div class="consumption-card">
+                    <h3>Water Consumption</h3>
+                    <ul class="consumption-list">
+                        <% if (data.waterTotal?.data?.totalWaterUsed) { %>
+                            <li>Total Used: <%= data.waterTotal.data.totalWaterUsed %> Liters</li>
+                        <% } else { %>
+                            <li>No water consumption data available</li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <!-- Fuel Points -->
+                <div class="consumption-card">
+                    <h3>Fuel Points</h3>
+                    <ul class="consumption-list">
+                        <% if (data.fuelToday?.data && data.fuelToday.data.length > 0) { %>
+                            <li>Today's Points: <%= data.fuelToday.data[0].pointsAwarded %></li>
+                        <% } else { %>
+                            <li>No fuel points data available</li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

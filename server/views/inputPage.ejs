@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bsustain - Input Data</title>
+    <style>
+        /* Input Page CSS */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #008000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    a{
+         
+        text-decoration:none ;   
+   }
+}
+.nav-links a:hover{
+    color: #008000;
+    
+}
+
+.nav-links li {
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.nav-links li:hover {
+    color: #008000;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #008000;
+    cursor: pointer;
+}
+
+.profile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.input-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.input-forms {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.form-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    
+}
+  #elect-submit{
+    position: relative;
+    top: 69px;
+  }  
+
+
+.form-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Bsustain</div>
+        <ul class="nav-links">
+            <a href="/api/user/dashboard">Home</a>
+            <a href="/api/user/input">Input</a>
+            <a href="/api/user/activity">Activity</a>
+            <a href="/api/user/leaderboard">Leaderboard</a>
+            <a href="/api/user/badges">Badges</a>
+        </ul>
+
+        <div class="profile-icon" id="profileIcon">
+           <img src="" />
+
+    
+        </div>
+    </nav>
+    
+    <div class="input-container">
+        <h1>Input Data</h1>
+        <p>Log your daily sustainability activities to earn points</p>
+        
+        <div class="input-forms">
+            <div class="form-card">
+                <form action="/api/water/add-water" method="POST">
+                <h3>Water Consumption</h3>
+                <label>Amount</label>
+                <input type="number" name="amount" placeholder="Enter amount">
+                <label>Unit</label>
+                <select name="unit">
+                    <option value="glass">Glass (0.25 L)</option>
+                    <option value="cup">Cup (0.24 L)</option>
+                    <option value="bottle">Bottle (0.5 L)</option>
+                    <option value="liter">Liter (1 L)</option>
+                    <option value="bucket">Bucket (10 L)</option>
+                    <option value="gallon_us">Gallon (US) (3.79 L)</option>
+                    <option value="gallon_uk">Gallon (UK) (4.54 L)</option>
+                    <option value="jug">Jug (2 L)</option>
+                </select>                  
+                <button>Submit</button>
+            </form>
+            </div>
+            
+            <div class="form-card">
+                <form action="/api/electricity/add-eData" method="POST">
+                <h3>Electricity Consumption</h3>
+                <label>Meter Reading (kWh)</label>
+                <input type="number" name="todaysMeterReading" placeholder="Enter today's meter reading">
+                <button id="elect-submit">Submit</button>
+                </form>
+            </div>
+            
+            <div class="form-card">
+                <form action="/api/fuel/add-fuelData" method="POST">
+                <h3>Fuel Consumption</h3>
+                <label>From</label>
+                <input type="text" name="fromPlace" placeholder="Starting location">
+                <label>To</label>
+                <input type="text" name="toPlace" placeholder="Destination">
+                <label>Transport Mode</label>
+                <select name="Mode">
+                    <option value="Petrol Car">Petrol Car (15 km/L)</option>
+                    <option value="Diesel Car">Diesel Car (20 km/L)</option>
+                    <option value="Electric Bike">Electric Bike (50 km/kWh)</option>
+                    <option value="Public Transport">Public Transport (100 km/unit)</option>
+                    <option value="Bicycle">Bicycle</option>
+                    <option value="Walking">Walking</option>
+                </select>                  
+                <button>Submit</button>
+                </form>
+            </div>
+            
+            <div class="form-card">
+                <form action="" method="post">
+                <h3>Other Contributions <p style="font-weight: 300; color: red;">(will be added in future)</p> </h3>
+                <label>Contribution Type</label>
+                <select>
+                    <option>Water Conservation</option>
+                    <option>Energy Conservation</option>
+                    <option>Fuel Conservation</option>
+                    <option>Other</option>
+                </select>
+                <label>Description</label>
+                <input type="text" placeholder="Describe your contribution">
+                <label>Upload Proof</label>
+                <input type="file">
+                <button>Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

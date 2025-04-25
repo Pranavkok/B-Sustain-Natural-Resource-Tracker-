@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BeSustain</title>
+    <style>
+        /* Styles for the login page */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #218838;
+}
+
+.forgot-password {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login </h2>
+        <form action="/api/user/login" method="POST">
+
+            <div class="input-group">
+            
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="button">Login</button>
+        </form>
+        <p class="signup-link">Don't have an account? <a href="/api/user/register">Sign Up</a></p>
+        <p class="forgot-password"><a href="/api/user/forgot-password">Forgot Password?</a></p>
+    </div>
+
+    <!-- js  -->
+
+    <script>
+    // Login Button Click
+    document.getElementById("loginBtn").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent form submission for now
+        let username = document.getElementById("username").value;
+        let password = password.value;
+
+        if (username === "" || password === "") {
+            alert("Please enter both username and password!");
+        } else {
+            alert(`Login Successful! Welcome, ${username}`);
+            // Here you can redirect the user or perform further login logic
+        }
+    });
+    </script>
+</body>
+</html>

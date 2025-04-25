@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - BeSustain</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#button:hover {
+    background: #218838;
+}
+
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+#button1{ position:relative;
+    bottom: 10px;
+    left: 60px;
+    height: 30px;
+    width: 30px;
+}
+#kk{
+    #button2{ position:relative;
+        bottom: 30px;
+        left: 150px;
+        height: 30px;
+        width: 30px;
+        border-radius: 10px;
+
+}}
+#xx{
+    #button1{ position:relative;
+        bottom: 30px;
+        left: 150px;
+
+        height: 30px;
+        width: 30px;
+        border-radius: 10px;
+}}
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create Your Account</h2>
+        <form action="/api/user/register" method="POST">
+            
+            <input type="text" id="fullname" name="name" placeholder="Full Name" required>
+            
+        <div >
+            <br>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+            <br>
+        <div id="xx">
+            <input type="password" id="password" name="password" placeholder="Password" required  >
+            <button id="button1" type="button" >👁️</button>
+        </div>
+            
+            <br>
+        <div >
+            
+            <input type="text" id="city" name="city" placeholder="City">
+            
+        </div>
+<br>
+            <div>
+
+            
+            <input type="number" id="prev-reading" name="prevReading" placeholder="Previous Consumption Reading" required>
+            
+        </div>
+        <br>
+
+            <button id="button"type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="/api/user/login">Log in</a></p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    let passwordField = document.getElementById("password");
+    let toggleBtn = document.getElementById("button1");
+
+    toggleBtn.addEventListener("click", function () {
+        if (passwordField.type === "password") {
+            passwordField.type = "text";  
+        } else {
+            passwordField.type = "password"; 
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    let toggleBtn = document.getElementById("button2");
+
+    toggleBtn.addEventListener("click", function () {
+        if (passwordField.type === "password") {
+            passwordField.type = "text";  
+        } else {
+            passwordField.type = "password"; 
+        }
+    });
+});
+
+    </script>
+</body>
+</html>

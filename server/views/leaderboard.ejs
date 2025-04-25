@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Bsustain</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #008000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+
+    a{
+         
+        text-decoration:none ;   
+   }
+}
+.nav-links a:hover{
+    color: #008000;
+    
+}
+
+.nav-links li {
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.nav-links li:hover {
+    color: #008000;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #008000;
+    cursor: pointer;
+}
+
+.profile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.leaderboard-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.global-rankings {
+    width: 60%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+    img{
+        height: 50px;
+        width: 50px;
+        position: relative;
+       left: 380px;
+    }
+}
+#kiki{
+    display: flex;
+    justify-content: space-around;
+
+    button{
+         background: #3498db;
+         border-radius: 5px;
+         cursor: pointer;
+
+    a{
+        text-decoration: none;
+    }}
+    button:hover{
+        background-color: rgb(82, 100, 236);
+    }
+}
+#list{
+   #card{
+    width:90%;
+    height: 20px;
+    background: rgb(230, 230, 230);
+    padding: 20px;
+    border-radius: 10px;
+    margin:  1rem 1rem 1rem 1rem ;
+    border: 2rem 2rem 2rem 2rem black;
+
+   /* box-shadow: 0px 4px 10px white(0, 0, 0, 0.1);*/
+   
+   div{
+    text-align: right;
+    position: relative;
+    bottom: 13px;
+   }
+   } 
+
+}
+
+#rank-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+#sidebar {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.top-champions, .your-ranking {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.top-champions {
+    text-align: center;
+}
+
+.champion-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.champion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.champion img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid gold;
+}
+
+your-ranking {
+    text-align: center;
+}
+
+.your-ranking {
+    
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Bsustain</div>
+        <ul class="nav-links">
+            <a href="/api/user/dashboard">Home</a>
+          <a href="/api/user/input">Input</a>
+          <a href="/api/user/activity">Activity</a>
+          <a href="/api/user/leaderboard">Leaderboard</a>
+          <a href="/api/user/badges">Badges</a>
+        </ul>
+        <div class="profile-icon" id="profileIcon">
+           
+
+    
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h1>Leaderboard</h1>
+        <p>See how you rank against other sustainability champions</p>
+
+        <div class="leaderboard-container">
+            <!-- Global Rankings -->
+            <div class="global-rankings" id="">
+                <h2>Global Rankings</h2>
+                <p>Based on total sustainability points earned</p>
+               <div> <ol type="1"  id="list" >
+                <% all.data.forEach(element => {%>
+                    <div id="card"><li><%= element.name %><div id="pts"><%= element.points %></div></li></div>
+                <%}); %>
+                   <!-- <div id="card"><li>{data.name}<div id="pts">-{data.points}</div></li></div>
+                   <div id="card"><li>{data.name}<div id="pts">-{data.points}</div></li></div>
+                   <div id="card"><li>{data.name}<div id="pts">-{data.points}</div></li></div>
+                   <div id="card"><li>{data.name}<div id="pts">-{data.points}</div></li></div>
+                   <div id="card"><li>{data.name}<div id="pts">-{data.points}</div></li></div>
+                   <div id="card"><li>{data.name}<div id="pts">-{data.points}</div></li></div>
+                   <div id="card"><li>{data.name}<div id="pts">-{data.points}</div></li></div>
+                   <div id="card"><li>{data.name}<div id="pts">-{data.points}</div></li></div> -->
+                  
+                </ul>
+                <div id="kiki">
+                <button><a href=?page=<%= all.pagination.currentPage - 1 %> class="pag1" >Prev Page</a></button>
+                
+                <button><a href=?page=<%= all.pagination.currentPage + 1 %>  class="pag3">Next Page</a></button>
+                </div>
+            </div>
+            </div>
+            <div id="sidebar">
+
+            <!-- Top 3 Champions -->
+            <div class="top-champions" >
+                <h2>Top 3 Champions</h2>
+                <p>This month's sustainability leaders</p>
+                <div class="champion-list" id="rank-item" >
+                    
+                    <div class="champion silver"><%=three.data[0].name %><br><%=three.data[0].points %></div>
+                    <div class="champion gold"><%=three.data[1].name %> <br><%=three.data[1].points%></div>
+                    <div class="champion bronze"><%=three.data[2].name %> <br><%=three.data[2].points %></div>
+                </div>
+            </div>
+
+            <!-- Your Ranking -->
+            <div class="your-ranking">
+                <h2>Your Ranking</h2>
+                <p>Your current position on the leaderboard</p>
+                <div class="profile-info">
+                    <p><strong><%= you.data.name %></strong></p><br>
+                    <p><%= you.data.points %></p><br>
+                    <p><%= you.data.rank %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

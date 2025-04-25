@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badges - BeSustain</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafa;
+      margin: 0;
+      padding: 20px;
+    }
+    .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #008000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    a{
+         
+        text-decoration:none ;   
+   }
+}
+.nav-links a:hover{
+    color: #008000;
+    
+}
+
+.nav-links li {
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.nav-links li:hover {
+    color: #008000;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #008000;
+    cursor: pointer;
+}
+
+.profile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    .badges-header {
+      text-align: left;
+    }
+    .badges-header h1 {
+      font-size: 2.5rem;
+    }
+    .badges-header p {
+      font-size: 1rem;
+      color: #666;
+    }
+    .badge-filters {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .badge-filters button {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: none;
+      background-color: #000;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .badge-filters button:hover {
+      background-color: #444;
+    }
+    .badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .badge-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .badge-card:hover {
+      transform: scale(1.02);
+    }
+    .badge-card.locked {
+      opacity: 0.4;
+      position: relative;
+    }
+    .badge-card.locked::after {
+      content: '\1F512';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .badge-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .badge-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .progress-bar {
+      background-color: #e0e0e0;
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background-color: #00b894;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Bsustain</div>
+        <ul class="nav-links">
+          <a href="/api/user/dashboard">Home</a>
+          <a href="/api/user/input">Input</a>
+          <a href="/api/user/activity">Activity</a>
+          <a href="/api/user/leaderboard">Leaderboard</a>
+          <a href="/api/user/badges">Badges</a>
+        </ul>
+
+        <a href="/api/user/profile" class="profile-icon" id="profileIcon">
+        </a>
+    </nav>
+  <div class="badges-header">
+    <h1>Badges</h1>
+    <p>Collect badges by completing sustainability challenges</p>
+  </div>
+  <div class="badge-filters">
+    <button>All Badges</button>
+    <button>Unlocked</button>
+    <button>Locked</button>
+  </div>
+  <!-- <h1>
+    Water: <%= data.water %> | 
+    Fuel: <%= data.fuel %> | 
+    Streak: <%= data.streak %> | 
+    Electricity: <%= data.electricity %>
+  </h1> -->
+
+  <div class="badges-grid">
+    <div class="badge-card <%= data.water > 50 ? 'locked' : '' %>">
+      <div class="badge-icon">💧</div>
+      <div class="badge-name">Water Saver</div>
+    </div>
+    <div class="badge-card <%= data.electricity < 90000 ? 'locked' : '' %>">
+      <div class="badge-icon ">⚡</div>
+      <div class="badge-name">Energy Efficient</div>
+    </div>
+    <div class="badge-card <%= data.fuel < 2000 ? 'locked' : '' %>">
+      <div class="badge-icon">⛽</div>
+      <div class="badge-name">Green Commuter</div>
+    </div>
+    <div class="badge-card <%= data.streak < 7 ? 'locked' : '' %>">
+      <div class="badge-icon">📅</div>
+      <div class="badge-name">7-Day Streak</div>
+    </div>
+    <div class="badge-card <%= data.water < 200 ? 'locked' : '' %>">
+      <div class="badge-icon">💧</div>
+      <div class="badge-name">Water Master</div>
+    </div>
+    <div class="badge-card <%= data.electricity < 200000 ? 'locked' : '' %>">
+      <div class="badge-icon ">⚡</div>
+      <div class="badge-name">Energy Master</div>
+    </div>
+    <div class="badge-card <%= data.fuel < 5000 ? 'locked' : '' %>">
+      <div class="badge-icon">⛽</div>
+      <div class="badge-name">Green Master</div>
+    </div>
+    
+  </div>
+</body>
+</html>
