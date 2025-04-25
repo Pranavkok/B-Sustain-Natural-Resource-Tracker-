@@ -1,4 +1,4 @@
-# 🌱 Bsustain – Track. Conserve. Earn Eco Points.
+# 🌱 B-Sustain – Track. Conserve. Earn Eco Points.
 
 **Bsustain** is a sustainability-focused web app that allows users to track their daily consumption of water, electricity, and fuel while rewarding them with points for eco-friendly actions like planting trees and recycling. It promotes environmentally conscious behavior by encouraging users to log their usage and contribute to a greener planet.
 
