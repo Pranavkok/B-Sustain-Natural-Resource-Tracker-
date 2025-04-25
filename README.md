@@ -11,7 +11,6 @@
 - [📦 Installation](#-installation)
 - [🚀 Usage Guide](#-usage-guide)
 - [📁 Project Structure](#-project-structure)
-- [🤝 Contributing](#-contributing)
 - [📃 License](#-license)
 
 ---
@@ -82,3 +81,70 @@
 ```bash
 git clone https://github.com/your-username/bsustain.git
 cd bsustain/server
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+## 🔧 3. Setup Environment Variables
+
+To run the Bsustain server securely and connect it to your database, you need to configure environment variables.
+
+### 🗂 Create a `.env` file
+
+In the `server/` directory, create a `.env` file:
+
+```bash
+FRONTEND_URL = 
+PORT = 
+MONGO_URI = 
+RESEND_API = 
+
+SECRET_KEY_ACCESS_TOKEN =
+SECRET_KEY_REFRESH_TOKEN = 
+```
+
+## ▶️ 4. Run the Server
+
+After setting up your environment variables and installing dependencies, you're ready to run the Bsustain backend server.
+
+### 📦 Start the server
+
+Use the following command inside the `server/` directory:
+
+```bash
+nodemon index.js
+```
+
+# 🚀 Usage Guide
+
+## Getting Started
+1. Visit [http://localhost:5000](http://localhost:5000)
+2. Register and log in with your account.
+3. Once logged in, you will be redirected to the homepage.
+
+# 🏛️ Project Structure
+
+```bash
+BSustain/
+└── server/
+    ├── config/           # DB config and environment setup
+    ├── controllers/      # Business logic and route handlers
+    ├── middleware/       # JWT and auth middleware
+    ├── models/           # Mongoose schemas (User, Fuel, Water, etc.)
+    ├── routes/           # API endpoints
+    ├── utils/            # Helper functions (e.g., distance calc)
+    ├── views/            # EJS templates for frontend rendering
+    ├── public/           # Static files (CSS, images, etc.)
+    ├── .env              # Environment variables
+    ├── package.json
+    └── index.js          # Main Express app entry point
+
+```
+
+# 📃 License
+
+This project is licensed under the MIT License.
